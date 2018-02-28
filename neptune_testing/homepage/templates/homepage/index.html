@@ -1,0 +1,15 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<div class="jumbotron text-center">
+  <h1>Welcome to Neptune</h1>
+  <p>This is under development right now!</p>
+  <a href="registration" class="btn btn-success" role="button">Sign Up Now!</a>
+</div>
