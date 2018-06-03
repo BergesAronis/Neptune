@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <h2>Login</h2>
 <form method="post">
@@ -5,3 +6,37 @@
   {{ form.as_p }}
   <button type="submit">Login</button>
 </form>
+=======
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<div class="center-block">
+<div class="row center-block">
+  <div class="center-block col-sm-4 panel panel-default">
+    {% block content %}
+      <h2>Log in</h2>
+      <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+          <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+        {% endfor %}
+        <button type="submit">Log in</button>
+      </form>
+    {% endblock %}
+  </div>
+</div>
+</div>
+>>>>>>> 95b0390f08b8b10216f723bde2949ed8f7d292d2
