@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from . import forms
 
-def index(request):
+def registration(request):
     if request.method == 'POST':
         form = forms.RegistrationForm(request.POST)
         if form.is_valid():
@@ -19,4 +19,21 @@ def index(request):
             return redirect('/admin')
     else:
         form = forms.RegistrationForm()
-    return render(request, 'registration/index.html', {'form': form})
+    return render(request, 'account_handling/registration.html', {'form': form})
+
+
+def login(request):
+    if request.method == 'POST':
+        form = forms.LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=raw_password)
+            if user is not None:
+                login(request, user)
+                return redirect('/admin')
+            else:
+                return render(request, 'login/index.html', {'form': form})
+    else:
+        form = forms.LoginForm()
+    return render(request, 'account_handling//login.html', {'form': form})
