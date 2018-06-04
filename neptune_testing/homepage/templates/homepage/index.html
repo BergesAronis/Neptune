@@ -10,4 +10,8 @@
   <h1>Welcome to Neptune</h1>
   <p>This is under development right now!</p>
   <a href="accounts/registration" class="btn btn-success" role="button">Sign Up Now!</a>
+  <a href="accounts/login" class="btn btn-success" role="button">Login!</a>
+  {% if request.user.is_authenticated %}
+    <p>Welcome {{ request.user.username }}</p>
+  {% endif %}
 </div>
