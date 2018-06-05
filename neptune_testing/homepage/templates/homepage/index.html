@@ -6,12 +6,32 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </head>
 
-<div class="jumbotron text-center">
-  <h1>Welcome to Neptune</h1>
-  <p>This is under development right now!</p>
-  <a href="accounts/registration" class="btn btn-success" role="button">Sign Up Now!</a>
-  <a href="accounts/login" class="btn btn-success" role="button">Login!</a>
-  {% if request.user.is_authenticated %}
-    <p>Welcome {{ request.user.username }}</p>
-  {% endif %}
-</div>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Neptune</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
+      <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+    </form>
+  </div>
+
+  </nav>
+
+  <div class="jumbotron text-center">
+    <h1>Welcome to Neptune</h1>
+    <p>This is under development right now!</p>
+    <a href="accounts/registration" class="btn btn-success" role="button">Sign Up Now!</a>
+    <a href="accounts/login" class="btn btn-success" role="button">Login!</a>
+    {% if request.user.is_authenticated %}
+      <p>Welcome {{ request.user.username }}</p>
+    {% endif %}
+  </div>
+</body>
