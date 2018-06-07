@@ -33,7 +33,7 @@ def account_login(request):
                 login(request, user)
                 return redirect('/')
             else:
-                return render(request, 'login/index.html', {'form': form})
+                return render(request, '/')
     else:
         form = forms.LoginForm()
     return render(request, 'account_handling/login.html', {'form': form})
