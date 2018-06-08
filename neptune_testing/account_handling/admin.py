@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from .models import Profile
+from .models import Profile, Agent
 
 class ProfileInline(admin.StackedInline):
     model = Profile
@@ -10,8 +10,13 @@ class ProfileInline(admin.StackedInline):
     verbose_name_plural = 'Profile'
     fk_name = 'user'
 
+class AgentInline(admin.StackedInline):
+    model = Agent
+    can_delete = False
+
+
 class CustomUserAdmin(UserAdmin):
-    inlines = (ProfileInline, )
+    inlines = (ProfileInline, AgentInline,)
 
     def get_inline_instances(self, request, obj=None):
         if not obj:

@@ -14,3 +14,48 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
+class UserType(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    @property
+    def type(self):
+        return 'undefined'
+
+
+@receiver(post_save, sender=User)
+def update_user_type(sender, instance, created, **kwargs):
+    if created:
+        UserType.objects.create(user=instance)
+    instance.usertype.save()
+
+
+@receiver(post_save, sender=User)
+def save_user_type(sender, instance, **kwargs):
+    instance.usertype.save()
+
+
+class Agent(UserType):
+    company = models.CharField(max_length=30, blank=True)
+
+    @property
+    def type(self):
+        return 'Agent'
+
+class Staff(UserType):
+
+    @property
+    def type(self):
+        return 'Staff'
+
+class Client(UserType):
+
+    @property
+    def type(self):
+        return 'Client'
