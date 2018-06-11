@@ -29,18 +29,6 @@ class UserType(models.Model):
         return 'undefined'
 
 
-@receiver(post_save, sender=User)
-def update_user_type(sender, instance, created, **kwargs):
-    if created:
-        UserType.objects.create(user=instance)
-    instance.usertype.save()
-
-
-@receiver(post_save, sender=User)
-def save_user_type(sender, instance, **kwargs):
-    instance.usertype.save()
-
-
 class Agent(UserType):
     company = models.CharField(max_length=30, blank=True)
 
@@ -55,6 +43,7 @@ class Staff(UserType):
         return 'Staff'
 
 class Client(UserType):
+    agent_company = models.CharField(max_length=30, blank=True)
 
     @property
     def type(self):

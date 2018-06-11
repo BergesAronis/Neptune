@@ -1,6 +1,7 @@
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from .models import Client
 
 from . import forms
 
@@ -11,8 +12,9 @@ def account_registration(request):
             user = form.save()
             user.refresh_from_db()
             username = form.cleaned_data.get('username')
-            user.profile.birth_date = form.cleaned_data.get('birth_date')
             user.save()
+            c = Client(user=user, agent_company='Neptune')
+            c.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
@@ -33,7 +35,7 @@ def account_login(request):
                 login(request, user)
                 return redirect('/')
             else:
-                return render(request, '/')
+                return redirect('/')
     else:
         form = forms.LoginForm()
     return render(request, 'account_handling/login.html', {'form': form})

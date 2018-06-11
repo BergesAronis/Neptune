@@ -40,6 +40,9 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       Sign Up
     </button>
+    {% if request.user.is_authenticated %}
+      <p>Hello {{ request.user.username }}, you are currently logged in as a {{ request.user.usertype.type }}</p>
+    {% endif %}
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
