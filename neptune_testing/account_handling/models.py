@@ -7,9 +7,6 @@ from django.dispatch import receiver
 class UserType(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    class Meta:
-        abstract = True
-
 
 class Agent(UserType):
     company = models.CharField(max_length=100, blank=True, null=True)
@@ -20,4 +17,4 @@ class Staff(UserType):
 
 
 class Client(UserType):
-    company = models.CharField(max_length=100, blank=True, null=True)
+    agent_company = models.CharField(max_length=100, blank=True, null=True)
