@@ -7,27 +7,17 @@ from django.dispatch import receiver
 class UserType(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    @property
-    def type(self):
-        return 'undefined'
+    class Meta:
+        abstract = True
 
 
 class Agent(UserType):
-    company = models.CharField(max_length=30, blank=True)
+    company = models.CharField(max_length=100, blank=True, null=True)
 
-    @property
-    def type(self):
-        return 'Agent'
 
 class Staff(UserType):
+    company = models.CharField(max_length=100, blank=True, null=True)
 
-    @property
-    def type(self):
-        return 'Staff'
 
 class Client(UserType):
-    agent_company = models.CharField(max_length=30, blank=True)
-
-    @property
-    def type(self):
-        return 'Client'
+    company = models.CharField(max_length=100, blank=True, null=True)
