@@ -41,7 +41,7 @@
       Sign Up
     </button>
     {% if request.user.is_authenticated %}
-      <p>Hello {{ request.user.username }}, you are currently logged in as a {{ request.user.agent }}</p>
+      <p>Hello {{ request.user.username }}, you are currently logged in as a {{ request.user.agent }}{{ request.user.staff }}{{ request.user.client }}</p>
     {% endif %}
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
