@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 
 class UserType(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
 
     class Meta:
         abstract = True
