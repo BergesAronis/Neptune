@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'homepage',
     'account_handling',
     'dashboard',
+    'to_do_list',
 ]
 
 MIDDLEWARE = [

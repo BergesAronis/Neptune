@@ -3,8 +3,17 @@
 {% block content %}
 <div class="col-sm-9">
   <div class="well">
-    <h4>Dashboard</h4>
-    <p>Content</p>
+    <h2>To-do list</h2>
+    {% if request.user.is_authenticated %}
+      {% for list in request.user.lists.all %}
+        <h4>{{ list.name }}</h4>
+        {% for item in list.items.all %}
+          <p>{{ item.text }}</p>
+        {% endfor %}
+      {% endfor %}
+    {% else %}
+      <p>User not authenticated</p>
+    {% endif %}
   </div>
   <div class="row">
     <div class="col-sm-3">
