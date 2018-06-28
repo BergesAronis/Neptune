@@ -37,44 +37,140 @@
   <div class="jumbotron text-center">
     <h1>Welcome to Neptune</h1>
     <p>This is under development right now!</p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Sign Up
-    </button>
     {% if request.user.is_authenticated %}
       <p>Hello {{ request.user.username }}, you are currently logged in as a {{ request.user.agent }}{{ request.user.staff }}{{ request.user.client }}</p>
     {% endif %}
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <form method="post" action="/accounts/registration">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
-              <button type="button" class="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="center-block col-sm-4 panel panel-default">
-                {% csrf_token %}
-                {% for field in form %}
-                  <p>
-                    {{ field.label_tag }}<br>
-                    {{ field }}
-                    {% for error in field.errors %}
-                      <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                  </p>
-                {% endfor %}
+  </div>
+
+
+  <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Sign Up as an Agent</h2>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agentRegistration">
+            Sign Up
+          </button>
+
+          <div class="modal fade" id="agentRegistration" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <form method="post" action="/accounts/agent_registration">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="agentRegistrationLabel">Sign up</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span>&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="center-block col-sm-4 panel panel-default">
+                      {% csrf_token %}
+                      {% for field in form %}
+                        <p>
+                          {{ field.label_tag }}<br>
+                          {{ field }}
+                          {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                          {% endfor %}
+                        </p>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                  </div>
+                </form>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Sign up</button>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <h2>Sign Up as Staff</h2>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staffRegistration">
+            Sign Up
+          </button>
+
+          <div class="modal fade" id="staffRegistration" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <form method="post" action="/accounts/staff_registration">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staffRegistrationLabel">Sign up</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span>&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="center-block col-sm-4 panel panel-default">
+                      {% csrf_token %}
+                      {% for field in form %}
+                        <p>
+                          {{ field.label_tag }}<br>
+                          {{ field }}
+                          {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                          {% endfor %}
+                        </p>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                  </div>
+                </form>
+              </div>
             </div>
-          </form>
+          </div>
+
+       </div>
+        <div class="col-md-4">
+          <h2>Sign Up as a Client</h2>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#clientRegistration">
+            Sign Up
+          </button>
+
+          <div class="modal fade" id="clientRegistration" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <form method="post" action="/accounts/client_registration">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="clientRegistrationLabel">Sign up</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span>&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="center-block col-sm-4 panel panel-default">
+                      {% csrf_token %}
+                      {% for field in form %}
+                        <p>
+                          {{ field.label_tag }}<br>
+                          {{ field }}
+                          {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                          {% endfor %}
+                        </p>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-  </div>
+
+
 </body>
