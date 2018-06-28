@@ -17,7 +17,7 @@
       <h2>Welcome</h2>
       <ul class="nav nav-pills nav-stacked">
         {% for app in navigation_apps %}
-          <li><a href="#test">{{ app.name }}</a><li>
+          <li><a href="{{ app.url }}">{{ app.name }}</a><li>
         {% endfor %}
       </ul><br>
     </div>
