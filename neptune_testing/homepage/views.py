@@ -7,4 +7,13 @@ from account_handling import forms
 
 def index(request):
     form = forms.RegistrationForm()
-    return render(request, 'homepage/index.html', {'form': form,})
+    client_form = forms.ClientRegistrationForm()
+    staff_form = forms.StaffRegistrationForm()
+    agent_form = forms.AgentRegistrationForm()
+    context = {
+        'form': form,
+        'client_form': client_form,
+        'staff_form': staff_form,
+        'agent_form': agent_form,
+    }
+    return render(request, 'homepage/index.html', context)
