@@ -5,7 +5,7 @@ from account_handling.models import User
 class Navigation(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     url = models.CharField(max_length=100, blank=True, null=True)
-    permissions = models.PositiveIntegerField()
+    permission = models.PositiveIntegerField()
 
     def __str__(self):
         return self.name
